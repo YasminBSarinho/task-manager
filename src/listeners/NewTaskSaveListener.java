@@ -17,7 +17,6 @@ public class NewTaskSaveListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent click) {
         String title = window.getTfTitle().getText();
-
         JOptionPane.showMessageDialog(window, "Clicou, tarefa: " + title);
     }
 }

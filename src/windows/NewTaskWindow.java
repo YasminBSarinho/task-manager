@@ -3,7 +3,9 @@ package windows;
 import listeners.NewTaskSaveListener;
 
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
 import java.awt.*;
+import java.text.ParseException;
 
 public class NewTaskWindow extends DefaultWindow{
     private JTextField tfTitle;
@@ -29,21 +31,43 @@ public class NewTaskWindow extends DefaultWindow{
         JLabel lbTitle = new JLabel(("Titulo: "));
         lbTitle.setBounds(30,100,80,30);
         add(lbTitle);
+
+        JLabel lbDeadline = new JLabel("Deadline: ");
+        lbDeadline.setBounds(30,190,80,30);
+        add(lbDeadline);
+
+        JLabel lbDays = new JLabel("dias.");
+        lbDays.setBounds(280,196,30,30);
+        add(lbDays);
+
     }
 
     public void textFieldsAdd(){
         tfTitle = new JTextField();
 
-        tfTitle.setBounds(80,100,250, 30);
-        tfTitle.setFont(new Font("Courier New", Font.ITALIC, 13));
+        tfTitle.setBounds(100,100,250, 30);
+        tfTitle.setFont(new Font("Arial", Font.ITALIC, 13));
         add(tfTitle);
+
+        try {
+            MaskFormatter dataMask = new MaskFormatter("##/##/####");
+            JFormattedTextField tfDeadline = new JFormattedTextField(dataMask);
+            tfDeadline.setHorizontalAlignment(JLabel.CENTER);
+            tfDeadline.setBounds(100,190,100,30);
+
+            add(tfDeadline);
+        } catch (ParseException e) {}
+
+        JTextField tfDays = new JTextField();
+        tfDays.setEnabled(false);
+        tfDays.setBounds(220,190,50,30);
+        add(tfDays);
+
     }
 
     private void buttonsConfig(){
-
         JButton leftButton = getLeftButton();
         JButton rightButton = getRightButton();
-
         NewTaskSaveListener listener = new NewTaskSaveListener(this);
         leftButton.addActionListener(listener);
 
