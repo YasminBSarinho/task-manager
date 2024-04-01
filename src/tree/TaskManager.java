@@ -1,6 +1,6 @@
 package tree;
 
-import javax.xml.crypto.Data;
+import javax.swing.*;
 import java.util.Date;
 
 public class TaskManager {
@@ -10,20 +10,20 @@ public class TaskManager {
         root = null;
     }
 
-    public void addTask(String title, int priority, String description, String type, Data deadline){
-        root = insert(root, title, priority, description, type, deadline);
+    public void addTask(String title, int priority, String description, Date deadline){
+        root = insert(root, title, priority, description, deadline);
     }
 
-    private TaskNode insert(TaskNode root, String title, int priority, String description, String type, Data deadline){
+    private TaskNode insert(TaskNode root, String title, int priority, String description, Date deadline){
         if (root == null){
-            root = new TaskNode(title, priority, description, type, (Date) deadline);
+            root = new TaskNode(title, priority, description, deadline);
             return root;
         }
 
         if(priority < root.getPriority()){
-            root.left = insert(root.left, title, priority, description, type, deadline);
+            root.left = insert(root.left, title, priority, description, deadline);
         }else if(priority > root.getPriority()){
-            root.right =  insert(root.right, title, priority, description, type, deadline);
+            root.right =  insert(root.right, title, priority, description, deadline);
         } return root;
     }
 
@@ -31,8 +31,7 @@ public class TaskManager {
         if (root != null) {
             inorderTraversal(root.left);
             System.out.println("Task: " + root.getTitle() + ", Priority: " + root.getPriority() +
-                    ", Description: " + root.getDescription() + ", Date: " + root.getDeadline() +
-                    ", Type: " + root.getType());
+                    ", Description: " + root.getDescription() + ", Date: " + root.getDate());
             inorderTraversal(root.right);
         }
     }

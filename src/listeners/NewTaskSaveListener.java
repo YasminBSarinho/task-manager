@@ -1,5 +1,7 @@
 package listeners;
 
+import tree.TaskManager;
+import tree.TaskNode;
 import windows.NewTaskWindow;
 
 import javax.swing.*;
@@ -9,6 +11,7 @@ import java.awt.event.ActionListener;
 public class NewTaskSaveListener implements ActionListener {
 
     private NewTaskWindow window;
+    TaskManager task = new TaskManager();
 
     public NewTaskSaveListener(NewTaskWindow window){
         this.window = window;
@@ -16,7 +19,10 @@ public class NewTaskSaveListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent click) {
-        String title = window.getTfTitle().getText();
+        String title = window.getTfTitle();
         JOptionPane.showMessageDialog(window, "Clicou, tarefa: " + title);
+
+        task.addTask(window.getTfTitle(), window.getPriority(), window.getTfDescription(), window.getDate());
+        task.printTasksInPriorityOrder();
     }
 }

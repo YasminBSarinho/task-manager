@@ -1,20 +1,19 @@
 package tree;
 
+import javax.swing.*;
 import java.util.Date;
 
 public class TaskNode {
     private String title;
     private int priority;
     private String description;
-    private String type;
     private Date deadline;
     TaskNode left, right;
 
-    public TaskNode(String title, int priority, String description, String type, Date deadline){
+    public TaskNode(String title, int priority, String description, Date deadline){
         this.title = title;
         this.priority = priority;
         this.description = description;
-        this.type = type;
         this.deadline = deadline;
         left = null;
         right = null;
@@ -44,19 +43,11 @@ public class TaskNode {
         this.description = description;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Date getDeadline() {
+    public Date getDate() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDate(Date deadline) {
         this.deadline = deadline;
     }
 }
