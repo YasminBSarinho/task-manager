@@ -15,9 +15,10 @@ public class NewTaskWindow extends DefaultWindow {
     private JTextArea tfDescription;
     private JFormattedTextField tfDeadline;
     private JComboBox<String> cbPriority;
-    private JComboBox<String> cbTipe;
     private int selectedPriority = 1;
     private Date validDate;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
 
     public NewTaskWindow() {
         super("Criar nova tarefa");
@@ -28,22 +29,6 @@ public class NewTaskWindow extends DefaultWindow {
         setVisible(true);
         buttonsConfig();
 
-
-        tfDeadline.addFocusListener(new FocusListener() {
-            @Override
-            public void focusLost(FocusEvent e) {
-                String actualValue = tfDeadline.getText();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    Date validDate = sdf.parse(actualValue);
-                } catch (ParseException ignored) {
-
-                }
-            }
-
-            @Override
-            public void focusGained(FocusEvent e) {}
-        });
     }
 
     private void addTitle() {
@@ -98,9 +83,9 @@ public class NewTaskWindow extends DefaultWindow {
             @Override
             public void focusLost(FocusEvent e) {
                 String actualValue = tfDeadline.getText();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 try {
-                    Date validDate = sdf.parse(actualValue);
+                    Date validDate = dateFormat.parse(actualValue);
                 } catch (ParseException ignored) {}
             }
 
@@ -147,7 +132,11 @@ public class NewTaskWindow extends DefaultWindow {
     }
 
     public Date getDate() {
-        return validDate;
+        try {
+            return dateFormat.parse(tfDeadline.getText());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
-
 }

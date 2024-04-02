@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static java.awt.SystemColor.window;
+
 public abstract class DefaultWindow extends JFrame {
     private JButton rightButton;
     private JButton leftButton;
@@ -70,7 +72,6 @@ public abstract class DefaultWindow extends JFrame {
 
         JMenuItem itemsList = new JMenuItem("Listar");
         menuOptions.add(itemsList);
-
 
     }
 

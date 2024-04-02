@@ -14,7 +14,7 @@ public class NewTaskSaveListener implements ActionListener {
     private NewTaskWindow window;
 
 
-    public NewTaskSaveListener(NewTaskWindow window){
+    public NewTaskSaveListener(NewTaskWindow window) {
         this.window = window;
     }
 
@@ -26,5 +26,9 @@ public class NewTaskSaveListener implements ActionListener {
         task.addTask(window.getTfTitle(), window.getPriority(), window.getTfDescription(), window.getDate());
         task.printTasksInPriorityOrder();
 
+        NewTaskWindow newTaskWindow = new NewTaskWindow();
+        newTaskWindow.setVisible(true);
+
+        window.dispose();
     }
 }
