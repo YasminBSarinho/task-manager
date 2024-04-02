@@ -49,8 +49,6 @@ public abstract class DefaultWindow extends JFrame {
                 case "Novo":
                     new NewTaskWindow();
                     break;
-                case "Sair":
-                    break;
             }
 
         }
@@ -70,29 +68,9 @@ public abstract class DefaultWindow extends JFrame {
         itemNew.addActionListener(menuListener);
         menuOptions.add(itemNew);
 
-        JMenuItem itemExit = new JMenuItem("Sair");
-        menuOptions.add(itemExit);
+        JMenuItem itemsList = new JMenuItem("Listar");
+        menuOptions.add(itemsList);
 
-        JMenu itemsList = new JMenu("Listar");
-        menuBar.add(itemsList);
-
-        JMenuItem listPriority = new JMenuItem("Listar por prioridade");
-        itemsList.add(listPriority);
-
-        JMenuItem listDay = new JMenuItem("Listar por dia");
-        itemsList.add(listDay);
-
-        JMenuItem listMonth = new JMenuItem("Listar por mes");
-        itemsList.add(listMonth);
-
-        JMenuItem listYear = new JMenuItem("Listar por ano");
-        itemsList.add(listYear);
-
-        JMenuItem listCompleted = new JMenuItem("Listar conculidas");
-        itemsList.add(listCompleted);
-
-        JMenuItem listOrder = new JMenuItem("Listar tarefas por ordem");
-        itemsList.add(listCompleted);
 
     }
 

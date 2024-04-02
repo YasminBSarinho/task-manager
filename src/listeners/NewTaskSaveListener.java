@@ -10,8 +10,9 @@ import java.awt.event.ActionListener;
 
 public class NewTaskSaveListener implements ActionListener {
 
-    private NewTaskWindow window;
     TaskManager task = new TaskManager();
+    private NewTaskWindow window;
+
 
     public NewTaskSaveListener(NewTaskWindow window){
         this.window = window;
@@ -24,5 +25,6 @@ public class NewTaskSaveListener implements ActionListener {
 
         task.addTask(window.getTfTitle(), window.getPriority(), window.getTfDescription(), window.getDate());
         task.printTasksInPriorityOrder();
+
     }
 }

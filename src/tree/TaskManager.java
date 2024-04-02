@@ -24,21 +24,25 @@ public class TaskManager {
             root.left = insert(root.left, title, priority, description, deadline);
         }else if(priority > root.getPriority()){
             root.right =  insert(root.right, title, priority, description, deadline);
-        } return root;
+        } else {
+            root.right = insert(root.right, title, priority, description, deadline);
+        }
+
+        return root;
     }
 
-    private void inorderTraversal(TaskNode root) {
+    private void reverseInorderTraversal(TaskNode root) {
         if (root != null) {
-            inorderTraversal(root.left);
+            reverseInorderTraversal(root.right);
             System.out.println("Task: " + root.getTitle() + ", Priority: " + root.getPriority() +
                     ", Description: " + root.getDescription() + ", Date: " + root.getDate());
-            inorderTraversal(root.right);
+            reverseInorderTraversal(root.left);
         }
     }
 
     public void printTasksInPriorityOrder() {
-        System.out.println("Tasks in Priority Order:");
-        inorderTraversal(root);
+        System.out.println("Tasks in Priority Order (from highest to lowest):");
+        reverseInorderTraversal(root);
     }
 
 }
