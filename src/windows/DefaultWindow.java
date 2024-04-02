@@ -30,7 +30,6 @@ public abstract class DefaultWindow extends JFrame {
         rightButton.setBounds(412, 460, 128, 40);
         add(rightButton);
 
-
         leftButton = new JButton();
         leftButton.setBounds(88, 460, 128, 40);
         add(leftButton);
@@ -46,15 +45,19 @@ public abstract class DefaultWindow extends JFrame {
             dispose();
             switch(option){
                 case "Listar":
-                    new ListItemsWindow("Lista");
+                    ListItemsWindow listItemsWindow = new ListItemsWindow("Lista de Tarefas");
+                    listItemsWindow.setVisible(true);
                     break;
                 case "Novo":
-                    new NewTaskWindow();
+                    NewTaskWindow newTaskWindow = new NewTaskWindow();
+                    newTaskWindow.setVisible(true);
                     break;
             }
 
+
         }
     }
+
 
     private void addMenu(){
 
@@ -71,6 +74,7 @@ public abstract class DefaultWindow extends JFrame {
         menuOptions.add(itemNew);
 
         JMenuItem itemsList = new JMenuItem("Listar");
+        itemsList.addActionListener(menuListener);
         menuOptions.add(itemsList);
 
     }
