@@ -1,11 +1,14 @@
 package windows;
 
 import com.sun.source.tree.NewArrayTree;
+import tree.TaskNode;
+import tree.TaskManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import static java.awt.SystemColor.window;
 
@@ -45,7 +48,9 @@ public abstract class DefaultWindow extends JFrame {
             dispose();
             switch(option){
                 case "Listar":
+                    List<TaskNode> tasks = TaskManager.getAllTasks();
                     ListItemsWindow listItemsWindow = new ListItemsWindow("Lista de Tarefas");
+                    listItemsWindow.addTable(tasks);
                     listItemsWindow.setVisible(true);
                     break;
                 case "Novo":
