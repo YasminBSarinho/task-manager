@@ -47,12 +47,6 @@ public abstract class DefaultWindow extends JFrame {
 
             dispose();
             switch(option){
-                case "Listar":
-                    List<TaskNode> tasks = TaskManager.getAllTasks();
-                    ListItemsWindow listItemsWindow = new ListItemsWindow("Lista de Tarefas");
-                    listItemsWindow.addTable(tasks);
-                    listItemsWindow.setVisible(true);
-                    break;
                 case "Novo":
                     NewTaskWindow newTaskWindow = new NewTaskWindow();
                     newTaskWindow.setVisible(true);
@@ -84,7 +78,7 @@ public abstract class DefaultWindow extends JFrame {
 
     }
 
-    public JButton getRightButton() {
+    public JButton getRightButton()   {
         return rightButton;
     }
 

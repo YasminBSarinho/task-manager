@@ -5,10 +5,17 @@ import java.util.Date;
 import java.util.List;
 
 public class TaskManager {
+    private static TaskManager instancia;
     private static TaskNode root;
 
-    public TaskManager() {
-        root = null;
+    private TaskManager() {}
+
+    public static TaskManager getInstance() {
+        if(instancia == null) {
+            root = null;
+            return instancia = new TaskManager();
+        }
+        return instancia;
     }
 
     public void addTask(String title, int priority, String description, Date deadline) {
@@ -26,7 +33,7 @@ public class TaskManager {
         } else if (priority > root.getPriority()) {
             root.right = insert(root.right, title, priority, description, deadline);
         } else {
-            // Tratar casos de prioridades iguais conforme necessário
+            // Tratar casos de prioridades iguais conforme necessÃ¡rio
             root.right = insert(root.right, title, priority, description, deadline);
         }
 

@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 
 public class NewTaskSaveListener implements ActionListener {
 
-    TaskManager task = new TaskManager();
     private NewTaskWindow window;
 
 
@@ -22,7 +21,7 @@ public class NewTaskSaveListener implements ActionListener {
     public void actionPerformed(ActionEvent click) {
         String title = window.getTfTitle();
         JOptionPane.showMessageDialog(window, "Clicou, tarefa: " + title);
-
+        var task = TaskManager.getInstance();
         task.addTask(window.getTfTitle(), window.getPriority(), window.getTfDescription(), window.getDate());
         task.printTasksInPriorityOrder();
 
